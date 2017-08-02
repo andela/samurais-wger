@@ -2,11 +2,16 @@
 import sys
 
 from django.core.management import execute_from_command_line
+from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
 
 from tasks import (
     setup_django_environment,
     get_user_config_path
 )
+
+application = get_wsgi_application()
+application = DjangoWhiteNoise(application)
 
 if __name__ == "__main__":
 
