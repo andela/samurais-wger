@@ -43,12 +43,7 @@ jobs:
 
       - run:
           name: install dependencies
-          command: |
-            - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | METHOD=script bash
-            - . $HOME/.nvm/nvm.sh
-            # - nvm install $TRAVIS_NODE_VERSION
-            # - nvm use $TRAVIS_NODE_VERSION
-
+          command:
             # Install requirements
             - pip install -r requirements_devel.txt
             - npm install
