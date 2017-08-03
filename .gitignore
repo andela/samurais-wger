@@ -65,3 +65,4 @@ node_modules
 
 # Others
 .DS_Store
+.travis.yml
