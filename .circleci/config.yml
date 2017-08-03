@@ -14,10 +14,10 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
     environment:
-      - TEST_MOBILE=True  DB=postgresql
-      - TEST_MOBILE=True  DB=sqlite
-      - TEST_MOBILE=False DB=postgresql
-      - TEST_MOBILE=False DB=sqlite
+      - TEST_MOBILE=True  DB=postgresql CIRCLE_NODE_VERSION="4"
+      - TEST_MOBILE=True  DB=sqlite     CIRCLE_NODE_VERSION="4"
+      - TEST_MOBILE=False DB=postgresql CIRCLE_NODE_VERSION="4"
+      - TEST_MOBILE=False DB=sqlite     CIRLCE_NODE_VERSION="4"
 
     working_directory: ~/repo
 
@@ -44,7 +44,12 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            
+            - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | METHOD=script bash
+            - . $HOME/.nvm/nvm.sh
+            - nvm install $CIRLCE_NODE_VERSION
+            - nvm use $CIRLCE_NODE_VERSION
+
+            # Install requirements
             - pip install -r requirements_devel.txt
             - npm install
             - if [[ "$DB" = "postgresql" ]]; then pip install psycopg2; fi
