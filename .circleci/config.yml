@@ -15,20 +15,13 @@ jobs:
       # - image: circleci/postgres:9.4
     machine:
         node:
-            version: 6.9.5
+            version: 4
 
     working_directory: ~/repo
 
     notifications:
         slack: andela:4Fln2jKzeoQJkyrxKPheRPOC
-
-    cache:
-      directories:
-        - $HOME/.cache/pip
-        - $HOME/.nvm
-        - node_modules
-        - wger/node_modules
-
+        
     steps:
       - checkout
 
@@ -38,6 +31,10 @@ jobs:
           - v1-dependencies-{{ checksum "requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
+          - $HOME/.cache/pip
+          - $HOME/.nvm
+          - node_modules
+          - wger/node_modules
 
       - run:
           name: install dependencies
