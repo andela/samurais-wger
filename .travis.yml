@@ -2,7 +2,7 @@ language: python
 
 notifications:
     slack: andela:4Fln2jKzeoQJkyrxKPheRPOC
-
+    
 # Cache the pip files
 cache:
   directories:
