@@ -1,8 +1,5 @@
 language: python
 
-notifications:
-    slack: andela:4Fln2jKzeoQJkyrxKPheRPOC
-
 # Cache the pip files
 cache:
   directories:
@@ -14,6 +11,10 @@ cache:
 # Use container infrastructure
 # http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
 sudo: false
+
+# Slack integration into travis.
+notifications:
+    slack: andela:wTXh4BqYQJIsuK4E9VV9QNRH
 
 # Python versions to test
 python:
@@ -46,8 +47,9 @@ install:
   - if [[ "$DB" = "postgresql" ]]; then pip install psycopg2; fi
 
   # Setup application
-  - if [[ "$DB" = "sqlite" ]]; then invoke create_settings; fi
-  - if [[ "$DB" = "postgresql" ]]; then invoke create_settings --database-type postgresql; fi
+  - pip install wger
+  - if [[ "$DB" = "sqlite" ]]; then wger create_settings; fi
+  - if [[ "$DB" = "postgresql" ]]; then wger create_settings --database-type postgresql; fi
 
 # Create test databases
 before_script:
@@ -65,8 +67,6 @@ script:
   # Regular application
   - coverage run --source='.' ./manage.py test
 
+
   # Code coverage
   - coverage report
-
-after success:
-    coveralls
