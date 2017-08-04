@@ -17,6 +17,12 @@ jobs:
     node:
         version: 4
 
+    environment:
+      - TEST_MOBILE=True  DB=postgresql
+      - TEST_MOBILE=True  DB=sqlite
+      - TEST_MOBILE=False DB=postgresql
+      - TEST_MOBILE=False DB=sqlite
+
     working_directory: ~/repo
 
     notifications:
@@ -40,7 +46,7 @@ jobs:
           name: install dependencies
           command: |
             - sh curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh
-            - sh $HOME/.nvm/nvm.sh
+            - . $HOME/.nvm/nvm.sh
             # - nvm install $CIRLCE_NODE_VERSION
             # - nvm use $CIRLCE_NODE_VERSION
 
