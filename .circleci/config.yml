@@ -42,7 +42,7 @@ jobs:
 
             # Setup application
             - pip install wger
-            - wger create_settings --database-type postgresql
+            - wger create_settings
 
       - save_cache:
           paths:
