@@ -72,5 +72,5 @@ script:
   # Code coverage
   - coverage report
 
-after success:
+after_success:
   - coveralls
