@@ -12,16 +12,7 @@ jobs:
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    node:
-        version: 4
-
-    environment:
-      - TEST_MOBILE=True  DB=postgresql
-      - TEST_MOBILE=True  DB=sqlite
-      - TEST_MOBILE=False DB=postgresql
-      - TEST_MOBILE=False DB=sqlite
+      - image: circleci/postgres:9.4
 
     working_directory: ~/repo
 
@@ -44,20 +35,16 @@ jobs:
 
       - run:
           name: install dependencies
-          command: |
-            - sh curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh
-            - . $HOME/.nvm/nvm.sh
-            # - nvm install $CIRLCE_NODE_VERSION
-            # - nvm use $CIRLCE_NODE_VERSION
-
+          command:
             # Install requirements
             - pip install -r requirements_devel.txt
             - npm install
             - if [[ "$DB" = "postgresql" ]]; then pip install psycopg2; fi
 
             # Setup application
-            - if [[ "$DB" = "sqlite" ]]; then invoke create_settings; fi
-            - if [[ "$DB" = "postgresql" ]]; then invoke create_settings --database-type postgresql; fi
+            - pip install wger
+            - if [[ "$DB" = "sqlite" ]]; then wger create_settings; fi
+            - if [[ "$DB" = "postgresql" ]]; then wger create_settings --database-type postgresql; fi
 
       - save_cache:
           paths:
