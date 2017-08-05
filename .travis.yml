@@ -14,7 +14,7 @@ sudo: false
 
 # Slack integration into travis.
 notifications:
-    slack: andela:wTXh4BqYQJIsuK4E9VV9QNRH
+    slack: andela:4Fln2jKzeoQJkyrxKPheRPOC
 
 # Python versions to test
 python:
