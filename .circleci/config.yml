@@ -35,8 +35,7 @@ jobs:
 
       - run:
           name: install dependencies
-          command:
-            # Install requirements
+          command: |
             - pip install -r requirements_devel.txt
             - npm install
             - if [[ "$DB" = "postgresql" ]]; then pip install psycopg2; fi
