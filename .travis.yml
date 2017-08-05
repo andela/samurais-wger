@@ -48,6 +48,7 @@ install:
 
   # Setup application
   - pip install wger
+  - pip install coveralls
   - if [[ "$DB" = "sqlite" ]]; then wger create_settings; fi
   - if [[ "$DB" = "postgresql" ]]; then wger create_settings --database-type postgresql; fi
 
@@ -72,5 +73,5 @@ script:
   # Code coverage
   - coverage report
 
-after_success:
-  - coveralls
+after_script:
+    coveralls
