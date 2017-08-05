@@ -1,5 +1,8 @@
 .. image:: https://travis-ci.org/andela/samurais-wger.svg?branch=ch-circleci-coveralls-149839245
     :target: https://travis-ci.org/andela/samurais-wger
+.. image:: https://coveralls.io/repos/github/andela/samurais-wger/badge.svg?branch=ch-circleci-coveralls-149839245
+    :target: https://coveralls.io/github/andela/samurais-wger?branch=ch-circleci-coveralls-149839245
+
 Thank you for downloading wger Workout Manager. wger (ˈvɛɡɐ) is a free, open source web
 application that manages your exercises and personal workouts, weight and diet
 plans. It can also be used as a simple gym management utility, providing different
