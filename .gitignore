@@ -59,6 +59,10 @@ target/
 # IDE
 .idea/
 
-# External Libraries 
+# External Libraries
 wger/core/static/bower_components
 node_modules
+
+# Others
+.DS_Store
+.circleci/
