@@ -4,45 +4,32 @@
 }
 
 .slider figure .slide {
-    // width: 20%;
-    // float: left;
     height: 20%;
     float: top;
 }
 
-// .slider figure img {
-//     width: 100%;
-//     float: left;
-// }
-
 .slider figure{
     position: relative;
-    //width: 500%;
     height: 500%;
     margin: 0;
-    //left: 0;
     top: 0;
     animation: 70s slidy infinite;
 }
 
 @keyframes slidy {
     0%{
-        //left: 0%;
         top: 0%;
     }
 
     10%{
-        //left: 0%;
         top: 0%;
     }
 
     12%{
-        //left: -100%;
         top: -95%;
     }
 
     22%{
-        //left: -100%;
         top: -95%;
     }
 
@@ -69,17 +56,14 @@
         top: -400%;
     }
     60%{
-        //left: 0%;
         top: 0%;
     }
 
     70%{
-        //left: -100%;
         top: 0%;
     }
 
     72%{
-        //left: -100%;
         top: -95%;
     }
 
