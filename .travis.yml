@@ -32,14 +32,14 @@ env:
 
 matrix:
     env:
-      - TESTFOLDER=wger/config/tests
-      - TESTFOLDER=wger/core/tests
-      - TESTFOLDER=wger/email/tests
-      - TESTFOLDER=wger/gym/tests
-      - TESTFOLDER=wger/manager/tests
-      - TESTFOLDER=wger/nutrition/tests
-      - TESTFOLDER=wger/utils/tests
-      - TESTFOLDER=wger/weight/tests
+      - TESTFOLDER=wger/config
+      - TESTFOLDER=wger/core
+      - TESTFOLDER=wger/email
+      - TESTFOLDER=wger/gym
+      - TESTFOLDER=wger/manager
+      - TESTFOLDER=wger/nutrition
+      - TESTFOLDER=wger/utils
+      - TESTFOLDER=wger/weight
 
 # Install the application
 install:
