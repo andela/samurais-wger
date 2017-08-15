@@ -29,6 +29,7 @@ env:
   - TEST_MOBILE=True  DB=sqlite     TRAVIS_NODE_VERSION="4"
   - TEST_MOBILE=False DB=postgresql TRAVIS_NODE_VERSION="4"
   - TEST_MOBILE=False DB=sqlite     TRAVIS_NODE_VERSION="4"
+
   - TESTFOLDER=wger/config/tests
   - TESTFOLDER=wger/core/tests
   - TESTFOLDER=wger/email/tests
