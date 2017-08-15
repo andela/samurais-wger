@@ -30,14 +30,16 @@ env:
   - TEST_MOBILE=False DB=postgresql TRAVIS_NODE_VERSION="4"
   - TEST_MOBILE=False DB=sqlite     TRAVIS_NODE_VERSION="4"
 
-  - TESTFOLDER=wger/config/tests
-  - TESTFOLDER=wger/core/tests
-  - TESTFOLDER=wger/email/tests
-  - TESTFOLDER=wger/gym/tests
-  - TESTFOLDER=wger/manager/tests
-  - TESTFOLDER=wger/nutrition/tests
-  - TESTFOLDER=wger/utils/tests
-  - TESTFOLDER=wger/weight/tests
+matrix:
+    env:
+      - TESTFOLDER=wger/config/tests
+      - TESTFOLDER=wger/core/tests
+      - TESTFOLDER=wger/email/tests
+      - TESTFOLDER=wger/gym/tests
+      - TESTFOLDER=wger/manager/tests
+      - TESTFOLDER=wger/nutrition/tests
+      - TESTFOLDER=wger/utils/tests
+      - TESTFOLDER=wger/weight/tests
 
 # Install the application
 install:
