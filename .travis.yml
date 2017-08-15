@@ -25,21 +25,15 @@ python:
 # Manually define here the combinations environment variables to test
 # https://github.com/travis-ci/travis-ci/issues/1519
 env:
-  - TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
-  - TEST_MOBILE=True  DB=sqlite     TRAVIS_NODE_VERSION="4"
-  - TEST_MOBILE=False DB=postgresql TRAVIS_NODE_VERSION="4"
-  - TEST_MOBILE=False DB=sqlite     TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/config TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/core TEST_MOBILE=True  DB=sqlite     TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/email TEST_MOBILE=False DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/gym TEST_MOBILE=False DB=sqlite     TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/manager TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/nutrition TEST_MOBILE=True  DB=sqlite     TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/utils TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/weight TEST_MOBILE=False DB=sqlite     TRAVIS_NODE_VERSION="4"
 
-matrix:
-    env:
-      - TESTFOLDER=wger/config
-      - TESTFOLDER=wger/core
-      - TESTFOLDER=wger/email
-      - TESTFOLDER=wger/gym
-      - TESTFOLDER=wger/manager
-      - TESTFOLDER=wger/nutrition
-      - TESTFOLDER=wger/utils
-      - TESTFOLDER=wger/weight
 
 # Install the application
 install:
