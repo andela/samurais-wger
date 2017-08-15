@@ -31,7 +31,7 @@ env:
   - TESTFOLDER=wger/gym TEST_MOBILE=False DB=sqlite     TRAVIS_NODE_VERSION="4"
   - TESTFOLDER=wger/manager TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
   - TESTFOLDER=wger/nutrition TEST_MOBILE=True  DB=sqlite     TRAVIS_NODE_VERSION="4"
-  - TESTFOLDER=wger/utils TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/utils TEST_MOBILE=False  DB=postgresql TRAVIS_NODE_VERSION="4"
   - TESTFOLDER=wger/weight TEST_MOBILE=False DB=sqlite     TRAVIS_NODE_VERSION="4"
 
 
