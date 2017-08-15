@@ -80,7 +80,6 @@ script:
   # Regular application
   - coverage run --source='.' ./manage.py test $TESTFOLDER
 
-
   # Code coverage
   - coverage report
 
