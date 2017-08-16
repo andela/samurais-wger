@@ -17,10 +17,7 @@ notifications:
     slack: andela:4Fln2jKzeoQJkyrxKPheRPOC
 
 # Python versions to test
-python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
+python: $python_version
 
 # Manually define here the combinations environment variables to test
 # https://github.com/travis-ci/travis-ci/issues/1519
@@ -76,6 +73,12 @@ script:
 
   # Code coverage
   - coverage report
+
+matrix:
+  python_version:
+    - 2.7
+    - 3.4
+    - 3.5
 
 after_script:
     coveralls
