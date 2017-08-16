@@ -17,19 +17,17 @@
 import datetime
 import decimal
 
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.core.urlresolvers import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import IntegerField
-from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
-from django.core.exceptions import ValidationError
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from wger.gym.models import Gym
-
 from wger.utils.constants import TWOPLACES
 from wger.utils.units import AbstractWeight
-
 from wger.weight.models import WeightEntry
 
 
@@ -123,6 +121,17 @@ class UserProfile(models.Model):
     Flag to mark a temporary user (demo account)
     '''
 
+    can_create_via_api = models.BooleanField(default=False,
+                                             editable=False)
+    '''
+    Give a user the power to create users via the API.
+    '''
+
+    created_by = models.CharField(editable=False,
+                                  null=True, blank=True, max_length=255)
+    '''
+    Table to show which users were created via the API
+    '''
     #
     # User preferences
     #
