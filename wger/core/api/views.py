@@ -47,12 +47,13 @@ class UserCreateViewSet(viewsets.ModelViewSet):
                                                 password=serializer.validated_data['password'])
                 user.save()
 
-                user.userprofile.created_by = creator.user.username
-                user.userprofile.save()
+                user_profile = UserProfile.objects.get(user=user)
+                user_profile.created_by = creator.user.username
+                user_profile.save()
 
                 return Response(serializer.data, status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
 
 class UserProfileViewSet(viewsets.ModelViewSet):
