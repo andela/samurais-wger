@@ -35,11 +35,15 @@
 {% for current_user in object_list.admins %}
 <tr>
     <td>
+        
         {{current_user.obj.pk}}
     </td>
     <td>
-        {{current_user.obj}}
-
+        {% if current_user.perms.manage_gym or current_user.perms.manage_gyms%}
+         {{current_user.obj}}
+        {% else %}
+        <a href="{% url 'core:user:overview' current_user.obj.pk %}">{{current_user.obj}}</a>
+        {% endif %}
         {% if current_user.perms.gym_trainer %}
             <span class="label label-primary">{% trans "Trainer" %}</span>
         {% endif %}
@@ -53,6 +57,7 @@
         {% endif %}
     </td>
     <td>
+        
         {{current_user.obj.get_full_name}}
     </td>
 
