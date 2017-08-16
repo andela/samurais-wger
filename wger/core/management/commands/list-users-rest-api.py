@@ -40,7 +40,7 @@ class Command(BaseCommand):
             elif len(users) > 0:
                 print('The users created by {} are: '.format(username))
                 for user in users:
-                    print('\t' + user.username)
+                    print('\t' + user.user.username)
 
         except Exception:
             print('User {} not found'.format(username))
