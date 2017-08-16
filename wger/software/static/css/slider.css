@@ -1,0 +1,88 @@
+.slider{
+    overflow: hidden;
+    height: 800px;
+}
+
+.slider figure .slide {
+    height: 20%;
+}
+
+.slider figure{
+    position: relative;
+    height: 500%;
+    margin: 0;
+    top: 0;
+    animation: 70s slidy infinite;
+}
+
+@keyframes slidy {
+    0%{
+        top: 0;
+    }
+
+    10%{
+        top: 0;
+    }
+
+    12%{
+        top: -95%;
+    }
+
+    22%{
+        top: -95%;
+    }
+
+    24%{
+        top: -195%;
+    }
+
+    34%{
+        top: -195%;
+    }
+
+    36%{
+        top: -300%;
+    }
+
+    46%{
+        top: -300%;
+    }
+
+    48%{
+        top: -400%;
+    }
+    58%{
+        top: -400%;
+    }
+    60%{
+        top: 0;
+    }
+
+    70%{
+        top: 0;
+    }
+
+    72%{
+        top: -95%;
+    }
+
+    82%{
+        top: -95%;
+    }
+
+    84%{
+        top: -195%;
+    }
+
+    94%{
+        top: -195%;
+    }
+
+    96%{
+        top: -300%;
+    }
+
+    100%{
+        top: -300%;
+    }
+}
