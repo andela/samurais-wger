@@ -30,9 +30,7 @@ class Command(BaseCommand):
         parser.add_argument('username', nargs='?', type=str)
 
     def handle(self, **options):
-        '''
-        Find if the currently the consumer can create users
-        '''
+
         username = options.get("username", None)
         try:
             user = User.objects.get(username=username)
