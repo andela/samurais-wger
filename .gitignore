@@ -46,7 +46,7 @@ coverage.xml
 
 # Django stuff:
 *.log
-settings*.py
+settings.py
 *.sqlite
 /CACHE
 
@@ -59,6 +59,6 @@ target/
 # IDE
 .idea/
 
-# External Libraries 
+# External Libraries
 wger/core/static/bower_components
 node_modules
