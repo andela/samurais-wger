@@ -26,7 +26,6 @@ except ImportError:
     from io import StringIO
 
 
-
 class ListApiUsersTestCase(TestCase):
     '''
     Test that a user can list all users created via the REST API.
