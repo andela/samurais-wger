@@ -28,6 +28,7 @@ env:
   - TESTFOLDER=wger/config TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
   - TESTFOLDER=wger/core TEST_MOBILE=True  DB=sqlite     TRAVIS_NODE_VERSION="4"
   - TESTFOLDER=wger/email TEST_MOBILE=False DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/exercises TEST_MOBILE=False DB=postgresql TRAVIS_NODE_VERSION="4"
   - TESTFOLDER=wger/gym TEST_MOBILE=False DB=sqlite     TRAVIS_NODE_VERSION="4"
   - TESTFOLDER=wger/manager TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
   - TESTFOLDER=wger/nutrition TEST_MOBILE=True  DB=sqlite     TRAVIS_NODE_VERSION="4"
