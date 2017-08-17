@@ -15,31 +15,26 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Workout Manager.  If not, see <http://www.gnu.org/licenses/>.
 
-from tastypie.api import Api
-from rest_framework import routers
-
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
-
-from wger.nutrition.sitemap import NutritionSitemap
-from wger.exercises.sitemap import ExercisesSitemap
-
-from wger.utils.generic_views import TextTemplateView
-from wger.utils.generic_views import WebappManifestView
-
-from wger.exercises.api import resources as exercises_api
-from wger.nutrition.api import resources as nutrition_api
-from wger.manager.api import resources as manager_api
+from rest_framework import routers
+from tastypie.api import Api
 from wger.core.api import resources as core_api
-from wger.weight.api import resources as weight_api
-
-from wger.manager.api import views as manager_api_views
 from wger.core.api import views as core_api_views
+from wger.exercises.api import resources as exercises_api
 from wger.exercises.api import views as exercises_api_views
+from wger.exercises.sitemap import ExercisesSitemap
+from wger.manager.api import resources as manager_api
+from wger.manager.api import views as manager_api_views
+from wger.nutrition.api import resources as nutrition_api
 from wger.nutrition.api import views as nutrition_api_views
+from wger.nutrition.sitemap import NutritionSitemap
+from wger.utils.generic_views import TextTemplateView, WebappManifestView
+from wger.weight.api import resources as weight_api
 from wger.weight.api import views as weight_api_views
 
 #
@@ -95,6 +90,7 @@ router.register(r'workoutlog', manager_api_views.WorkoutLogViewSet, base_name='w
 
 # Core app
 router.register(r'userprofile', core_api_views.UserProfileViewSet, base_name='userprofile')
+router.register(r'usercreation', core_api_views.UserCreateViewSet, base_name='usercreation')
 router.register(r'language', core_api_views.LanguageViewSet, base_name='language')
 router.register(r'daysofweek', core_api_views.DaysOfWeekViewSet, base_name='daysofweek')
 router.register(r'license', core_api_views.LicenseViewSet, base_name='license')
@@ -121,7 +117,6 @@ router.register(r'mealitem', nutrition_api_views.MealItemViewSet, base_name='mea
 router.register(r'weightentry', weight_api_views.WeightEntryViewSet, base_name='weightentry')
 
 
-from django.contrib import admin
 admin.autodiscover()
 
 #
