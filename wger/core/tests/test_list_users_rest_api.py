@@ -12,12 +12,19 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 import sys
-from io import StringIO
 
 from django.contrib.auth.models import User
 from django.core.management import call_command
 from django.test import TestCase
 from wger.core.models import UserProfile
+
+try:
+    # Python 2
+    from cStringIO import StringIO
+except ImportError:
+    # Python 3
+    from io import StringIO
+
 
 
 class ListApiUsersTestCase(TestCase):
