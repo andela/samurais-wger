@@ -25,16 +25,15 @@ python:
 # Manually define here the combinations environment variables to test
 # https://github.com/travis-ci/travis-ci/issues/1519
 env:
-  - TESTFOLDER=extras/bench TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
-  - TESTFOLDER=wger/config TEST_MOBILE=True  DB=sqlite TRAVIS_NODE_VERSION="4"
-  - TESTFOLDER=wger/core TEST_MOBILE=False  DB=postgresql     TRAVIS_NODE_VERSION="4"
-  - TESTFOLDER=wger/email TEST_MOBILE=False DB=sqlite TRAVIS_NODE_VERSION="4"
-  - TESTFOLDER=wger/exercises TEST_MOBILE=True DB=postgresql TRAVIS_NODE_VERSION="4"
-  - TESTFOLDER=wger/gym TEST_MOBILE=True DB=sqlite     TRAVIS_NODE_VERSION="4"
-  - TESTFOLDER=wger/manager TEST_MOBILE=False  DB=postgresql TRAVIS_NODE_VERSION="4"
-  - TESTFOLDER=wger/nutrition TEST_MOBILE=False  DB=sqlite     TRAVIS_NODE_VERSION="4"
-  - TESTFOLDER=wger/utils TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
-  - TESTFOLDER=wger/weight TEST_MOBILE=True DB=sqlite     TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/config TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/core TEST_MOBILE=True  DB=sqlite     TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/email TEST_MOBILE=False DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/exercises TEST_MOBILE=False DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/gym TEST_MOBILE=False DB=sqlite     TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/manager TEST_MOBILE=True  DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/nutrition TEST_MOBILE=True  DB=sqlite     TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/utils TEST_MOBILE=False  DB=postgresql TRAVIS_NODE_VERSION="4"
+  - TESTFOLDER=wger/weight TEST_MOBILE=False DB=sqlite     TRAVIS_NODE_VERSION="4"
 
 
 # Install the application
