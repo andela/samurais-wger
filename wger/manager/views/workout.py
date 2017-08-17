@@ -19,13 +19,14 @@ import uuid
 import datetime
 
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.template.context_processors import csrf
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy, ugettext as _
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic import DeleteView, UpdateView
+from django.core import serializers
 
 from wger.core.models import (
     RepetitionUnit,
@@ -213,6 +214,28 @@ def add(request):
     workout.save()
 
     return HttpResponseRedirect(workout.get_absolute_url())
+
+@login_required
+def export(request):
+    '''
+    Export existing work outs
+    '''
+
+    if not Workout.objects.filter(user=request.user):
+        return HttpResponseRedirect(reverse('manager:workout:overview'))
+
+    with open("file.json", "w") as out:
+        data = serializers.serialize("json", Workout.objects.filter(
+            user=request.user))
+        out.write(data)
+
+    with open("file.json", "r") as out:
+        response = HttpResponse(out, content_type='application/json')
+        response['Content-Disposition'] = 'attachment; ' \
+                                          'filename=user-' + \
+                                          str(request.user.id)+'-workouts.json'
+
+    return response
 
 
 class WorkoutDeleteView(WgerDeleteMixin, LoginRequiredMixin, DeleteView):
