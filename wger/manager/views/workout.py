@@ -17,6 +17,7 @@
 import logging
 import uuid
 import datetime
+import json
 
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
@@ -218,22 +219,61 @@ def add(request):
 @login_required
 def export(request):
     '''
-    Export existing work outs
+        Exports workouts of a selected gym member
     '''
+    if request.user.is_anonymous():
+        return HttpResponseForbidden()
 
     if not Workout.objects.filter(user=request.user):
         return HttpResponseRedirect(reverse('manager:workout:overview'))
 
-    with open("file.json", "w") as out:
-        data = serializers.serialize("json", Workout.objects.filter(
-            user=request.user))
-        out.write(data)
+    workouts = []
+    for item in Workout.objects.filter(user=request.user):
+        items = []
+        day_list = list(item.day_set.all())
+        for day in day_list:
+            sets = list(day.set_set.all())
+            my_sets = []
+            for stuff in sets:
+                my_exs = []
+                exercises = stuff.exercises.all()
+                for exercise in exercises:
+                    results = {
+                        "id": exercise.id,
+                        "name": exercise.name,
+                        "description": exercise.description
+                    }
+                    my_exs.append(results)
 
-    with open("file.json", "r") as out:
+            results = {
+                "id": stuff.id,
+                "exercises": my_exs
+            }
+            my_sets.append(results)
+        results = {
+            "training": str(day.training),
+            "description": day.description,
+            "sets": my_sets
+        }
+        items.append(results)
+    results = {
+        "creation_date": str(item.creation_date),
+        "comments": item.comment,
+        "day_list": items
+    }
+
+    workouts.append(results)
+
+    with open('workouts.json', 'w') as f:
+        data = json.dumps(workouts)
+        f.write(data)
+
+    with open('workouts.json', 'r') as out:
         response = HttpResponse(out, content_type='application/json')
         response['Content-Disposition'] = 'attachment; ' \
                                           'filename=user-' + \
-                                          str(request.user.id)+'-workouts.json'
+                                          str(request.user.id) + \
+                                          '-workouts.json'
 
     return response
 
