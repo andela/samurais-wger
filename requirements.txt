@@ -28,3 +28,6 @@ django-cors-headers
 
 # Python3 compatibility
 six
+
+# Social Login
+social-auth-app-django

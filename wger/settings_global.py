@@ -86,6 +86,9 @@ INSTALLED_APPS = (
 
     # django-bower for installing bower packages
     'djangobower',
+
+    # Social Login
+    'social_django',
 )
 
 # added list of external libraries to be installed by bower
@@ -126,11 +129,17 @@ MIDDLEWARE_CLASSES = (
     # Django mobile
     'django_mobile.middleware.MobileDetectionMiddleware',
     'django_mobile.middleware.SetFlavourMiddleware',
+
+    # Social Login
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'wger.utils.helpers.EmailAuthBackend'
+    'wger.utils.helpers.EmailAuthBackend',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
 )
 
 TEMPLATES = [
@@ -154,7 +163,11 @@ TEMPLATES = [
                 'django_mobile.context_processors.flavour',
 
                 # Breadcrumbs
-                'django.template.context_processors.request'
+                'django.template.context_processors.request',
+
+                # Social Login
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
             'loaders': [
                 # Django mobile
@@ -194,6 +207,23 @@ EMAIL_SUBJECT_PREFIX = '[wger] '
 #
 LOGIN_URL = '/user/login'
 LOGIN_REDIRECT_URL = '/'
+
+
+#
+# Social Login Configurations
+#
+
+# Twitter
+SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_AUTH_TWITTER_KEY']
+SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_AUTH_TWITTER_SECRET']
+
+# Github
+SOCIAL_AUTH_GITHUB_KEY = os.environ['SOCIAL_AUTH_GITHUB_KEY']
+SOCIAL_AUTH_GITHUB_SECRET = os.environ['SOCIAL_AUTH_GITHUB_SECRET']
+
+# Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ['SOCIAL_AUTH_FACEBOOK_KEY']
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['SOCIAL_AUTH_FACEBOOK_SECRET']
 
 
 #

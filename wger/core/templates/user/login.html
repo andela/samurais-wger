@@ -14,6 +14,12 @@
     {% trans 'Login' as submit_text %}
     {% render_form_fields form submit_text %}
 </form>
+  <br>
+  <h3>Or Login With</h3>
+  <hr>
+  <a href="{% url 'social:begin' 'github' %}"><span style="font-size: xx-large" class="{% fa_class 'github' %}"></span></a>
+  <a href="{% url 'social:begin' 'twitter' %}"><span style="font-size: xx-large" class="{% fa_class 'twitter' %}"></span></a>
+  <a href="{% url 'social:begin' 'facebook' %}"><span style="font-size: xx-large" class="{% fa_class 'facebook' %}"></span></a>
 {% endblock %}
 
 
