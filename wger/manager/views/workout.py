@@ -216,6 +216,7 @@ def add(request):
 
     return HttpResponseRedirect(workout.get_absolute_url())
 
+
 @login_required
 def export(request):
     '''
