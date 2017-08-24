@@ -21,6 +21,7 @@ from wger.core.tests.base_testcase import WorkoutManagerDeleteTestCase
 from wger.core.tests.base_testcase import WorkoutManagerEditTestCase
 from wger.core.tests.base_testcase import WorkoutManagerTestCase
 from wger.manager.models import Workout
+from django.contrib.auth.models import User
 
 
 class WorkoutShareButtonTestCase(WorkoutManagerTestCase):
@@ -123,6 +124,43 @@ class AddWorkoutTestCase(WorkoutManagerTestCase):
         self.user_logout()
 
 
+class WorkoutExportTestCase(WorkoutManagerTestCase):
+    '''
+    Tests the workout export
+    '''
+
+    def test_get_workout_export_redirect(self):
+        '''
+        Helper function to test the workout export redirect
+        '''
+
+        response = self.client.get(reverse('manager:workout:export'))
+
+        # Redirect if no workouts
+        self.assertEqual(response.status_code, 302)
+
+    def test_get_workout_export(self):
+        '''
+        Helper function to test the workout export
+        '''
+
+        # Login default user
+        self.user_login()
+
+        # Create new work out
+        workout = Workout()
+        workout.user = User.objects.get(pk=1)
+        workout.save()
+
+        response = self.client.get(reverse('manager:workout:export'))
+
+        # Test successful creation of json file
+        self.assertEqual(response.status_code, 200)
+        self.assertEquals(
+            response.get('Content-Disposition'), 'attachment; filename=user-'
+                                                 + str(1) + '-workouts.json')
+
+
 class DeleteTestWorkoutTestCase(WorkoutManagerDeleteTestCase):
     '''
     Tests deleting a Workout
@@ -170,29 +208,6 @@ class WorkoutOverviewTestCase(WorkoutManagerTestCase):
         '''
         self.user_login()
         self.get_workout_overview()
-
-
-class WorkoutExportTestCase(WorkoutManagerTestCase):
-    '''
-    Tests the workout export
-    '''
-
-    def get_workout_export(self):
-        '''
-        Helper function to test the workout overview
-        '''
-
-        workout = Workout()
-        workout.creation_date = datetime.date.today()
-        workout.save()
-
-        response = self.client.get(reverse('manager:workout:export'))
-
-        # Page exists
-        self.assertEqual(response.status_code, 200)
-        self.assertEquals(
-            response.get('Content-Disposition'), 'attachment; filename=user-'
-                                                 + str(1) + '-workouts.json')
 
 
 class WorkoutModelTestCase(WorkoutManagerTestCase):

@@ -246,17 +246,17 @@ def export(request):
                     }
                     my_exs.append(results)
 
+                results1 = {
+                    "id": stuff.id,
+                    "exercises": my_exs
+                }
+                my_sets.append(results1)
             results = {
-                "id": stuff.id,
-                "exercises": my_exs
+                "training": str(day.training),
+                "description": day.description,
+                "sets": my_sets
             }
-            my_sets.append(results)
-        results = {
-            "training": str(day.training),
-            "description": day.description,
-            "sets": my_sets
-        }
-        items.append(results)
+            items.append(results)
     results = {
         "creation_date": str(item.creation_date),
         "comments": item.comment,
