@@ -15,6 +15,7 @@ framework.
 """
 import os
 from django.core.wsgi import get_wsgi_application
+from whitenoise import WhiteNoise
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 
@@ -22,6 +23,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 application = get_wsgi_application()
+application = WhiteNoise(application)
 
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
