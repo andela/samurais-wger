@@ -172,6 +172,29 @@ class WorkoutOverviewTestCase(WorkoutManagerTestCase):
         self.get_workout_overview()
 
 
+class WorkoutExportTestCase(WorkoutManagerTestCase):
+    '''
+    Tests the workout export
+    '''
+
+    def get_workout_export(self):
+        '''
+        Helper function to test the workout overview
+        '''
+
+        workout = Workout()
+        workout.creation_date = datetime.date.today()
+        workout.save()
+
+        response = self.client.get(reverse('manager:workout:export'))
+
+        # Page exists
+        self.assertEqual(response.status_code, 200)
+        self.assertEquals(
+            response.get('Content-Disposition'), 'attachment; filename=user-'
+                                                 + str(1) + '-workouts.json')
+
+
 class WorkoutModelTestCase(WorkoutManagerTestCase):
     '''
     Tests other functionality from the model
