@@ -1,0 +1,1 @@
+[{"model": "manager.schedule", "pk": 1, "fields": {"user": 1, "name": "1", "start_date": "2017-08-16", "is_active": true, "is_loop": false}}]

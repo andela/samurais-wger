@@ -1,0 +1,1 @@
+[{"model": "manager.workout", "pk": 4, "fields": {"creation_date": "2017-08-16", "comment": "", "user": 1}}, {"model": "manager.workout", "pk": 5, "fields": {"creation_date": "2017-08-16", "comment": "", "user": 1}}]
