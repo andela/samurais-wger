@@ -31,7 +31,6 @@ Jinja2==2.9.6
 MarkupSafe==1.0
 oauthlib==2.0.2
 olefile==0.44
-pep8==1.7.0
 Pillow==4.2.1
 Pygments==2.2.0
 PyJWT==1.5.2
