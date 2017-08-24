@@ -1,88 +1,62 @@
-.slider{
-    overflow: hidden;
-    height: 800px;
+@import url(//fonts.googleapis.com/css?family=Lato:400,900);
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+.info-card {
+    float: left;
+  margin: 10px;
+  -webkit-perspective: 600px;
 }
 
-.slider figure .slide {
-    height: 20%;
+.front, .back {
+  background: #FFF;
+  border-radius: 10px;
+  transition: -webkit-transform 1s;
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  border: 1px solid black;
 }
 
-.slider figure{
-    position: relative;
-    height: 500%;
-    margin: 0;
-    top: 0;
-    animation: 70s slidy infinite;
+.front {
+  overflow: hidden;
+  width: 450px;
+  height: 450px;
+  position: absolute;
+  z-index: 1;
+  background-color: black;
+  opacity: 0.5;
 }
 
-@keyframes slidy {
-    0%{
-        top: 0;
-    }
-
-    10%{
-        top: 0;
-    }
-
-    12%{
-        top: -95%;
-    }
-
-    22%{
-        top: -95%;
-    }
-
-    24%{
-        top: -195%;
-    }
-
-    34%{
-        top: -195%;
-    }
-
-    36%{
-        top: -300%;
-    }
-
-    46%{
-        top: -300%;
-    }
-
-    48%{
-        top: -400%;
-    }
-    58%{
-        top: -400%;
-    }
-    60%{
-        top: 0;
-    }
-
-    70%{
-        top: 0;
-    }
-
-    72%{
-        top: -95%;
-    }
-
-    82%{
-        top: -95%;
-    }
-
-    84%{
-        top: -195%;
-    }
-
-    94%{
-        top: -195%;
-    }
-
-    96%{
-        top: -300%;
-    }
-
-    100%{
-        top: -300%;
-    }
+.back {
+  padding: 20px;
+  padding-top: 0px;
+  width: 450px;
+  height: 450px;
+  -webkit-transform: rotateY(-180deg);
+  overflow: scroll;
+  background-color: black;
 }
+
+.info-card:hover .back {
+  -webkit-transform: rotateY(0);
+}
+
+.info-card:hover .front {
+  -webkit-transform: rotateY(180deg);
+}
+
+.card-image {
+width: 100%;
+height: 100%;
+}
+
+
+/* Social buttons */
+.social {
+  list-style: none;
+  padding: 0px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+
+  
