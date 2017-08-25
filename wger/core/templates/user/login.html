@@ -14,29 +14,24 @@
     {% trans 'Login' as submit_text %}
     {% render_form_fields form submit_text %}
 </form>
+
   <br>
-  <h3>Or Login With</h3>
+  <h3>Or Login With
   <hr>
   <a href="{% url 'social:begin' 'github' %}"><span style="font-size: xx-large" class="{% fa_class 'github' %}"></span></a>
   <a href="{% url 'social:begin' 'twitter' %}"><span style="font-size: xx-large" class="{% fa_class 'twitter' %}"></span></a>
   <a href="{% url 'social:begin' 'facebook' %}"><span style="font-size: xx-large" class="{% fa_class 'facebook' %}"></span></a>
-{% endblock %}
-
-
-{% block sidebar %}
-<h4>{% trans "No account?" %}</h4>
-<p>
-    <a href="{% url 'core:user:registration' %}" class="btn btn-block btn-default">
-        <span class="{% fa_class 'sign-in' %}"></span>
-        {% trans "Register" %}
-    </a>
-</p>
-
-<h4>{% trans "Forgot password?" %}</h4>
-<p>
-    <a href="{% url 'core:user:password_reset' %}" class="btn btn-block btn-default">
+  </h3>
+<div style="text-align: right">
+  No account?
+  <a href="{% url 'core:user:registration' %}">
+        {% trans "Register" %} <span class="{% fa_class 'sign-in' %}"></span>
+  </a>
+  Forgot password?
+  <a href="{% url 'core:user:password_reset' %}">
         <span class="{% fa_class 'key' %}"></span>
         {% trans "Reset password" %}
-    </a>
-</p>
+  </a>
+</div>
 {% endblock %}
+
