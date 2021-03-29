@@ -30,7 +30,7 @@ MarkupSafe==1.0
 oauthlib==2.0.2
 olefile==0.44
 Pillow==4.2.1
-Pygments==2.2.0
+Pygments==2.7.4
 PyJWT==1.5.2
 python-dateutil==2.6.1
 python-mimeparse==1.6.0
