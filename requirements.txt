@@ -48,6 +48,6 @@ social-auth-core==1.4.0
 Sphinx==1.6.3
 sphinxcontrib-websupport==1.0.1
 sqlparse==0.2.3
-urllib3==1.22
+urllib3==1.26.5
 webencodings==0.5.1
 whitenoise==3.3.0
